@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- SVG favicons are still unsupported in a few places, and iOS needs a real
+         PNG for a home-screen bookmark. -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0b" />
+    <!--
+      ⚠️ data-rh="true" on the static title/description is load-bearing, not decoration.
+      react-helmet-async only REPLACES head tags carrying that marker; without it these
+      stay put and every rendered page ends up with two descriptions. Helmet's lands
+      LAST, so a crawler or link-preview tool taking "the" description got this English
+      boilerplate — including on /zh, where the correct Chinese description was sitting
+      further down the head and losing.
+    -->
+    <title data-rh="true">I AUTOHAUS | Pre-Owned Cars in Richmond, BC</title>
+
+    <!--
+      ⚠️ These live in the SERVED HTML on purpose, not in react-helmet.
+
+      This is a single-page app, so Helmet only injects tags after React runs. The
+      crawlers that build link previews — Facebook, LinkedIn, WhatsApp, iMessage,
+      Slack, Discord — do not execute JavaScript, so anything Helmet sets is
+      invisible to them. Before this, sharing the site produced a bare title with
+      no description and no image at all.
+
+      That also means these are SITE-WIDE defaults: every URL shares this card.
+      Per-vehicle preview images would need server rendering or prerendering,
+      which this SPA does not have.
+    -->
+    <meta data-rh="true" name="description" content="Pre-owned vehicle sales, financing, leasing and service at 10740 Cambie Road, Richmond, BC. Browse the full inventory online." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="I AUTOHAUS" />
+    <meta property="og:title" content="I AUTOHAUS | Pre-Owned Cars in Richmond, BC" />
+    <meta property="og:description" content="Pre-owned vehicle sales, financing, leasing and service at 10740 Cambie Road, Richmond, BC. Browse the full inventory online." />
+    <meta property="og:image" content="https://www.iautohaus.ca/og-card.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="A car in the I AUTOHAUS showroom" />
+    <meta property="og:url" content="https://www.iautohaus.ca/" />
+    <meta property="og:locale" content="en_CA" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="I AUTOHAUS | Pre-Owned Cars in Richmond, BC" />
+    <meta name="twitter:description" content="Pre-owned vehicle sales, financing, leasing and service at 10740 Cambie Road, Richmond, BC." />
+    <meta name="twitter:image" content="https://www.iautohaus.ca/og-card.jpg" />
+
+    <!-- Site-wide JSON-LD (AutoDealer, WebSite) is injected here by server.mjs
+         from live settings. Kept out of the bundle on purpose: it must be in the
+         served HTML for crawlers that do not run JS, and it must reflect the
+         dealer's current hours and price range, not whatever was true at build. -->
+    <meta name="x-site-origin" content="https://www.iautohaus.ca"><script type="application/ld+json">{"@context":"https://schema.org","@type":["AutoDealer","AutomotiveBusiness"],"@id":"https://www.iautohaus.ca/#dealer","name":"I AUTOHAUS","legalName":"I Autohaus Sales and Leasing Ltd.","url":"https://www.iautohaus.ca","telephone":"604-270-7662","address":{"@type":"PostalAddress","streetAddress":"10740 Cambie Road, Richmond, BC V6X 1K8","addressCountry":"CA"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":"Monday","opens":"09:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Tuesday","opens":"09:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Wednesday","opens":"09:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Thursday","opens":"09:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"09:00","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"17:00"}],"sameAs":["https://www.instagram.com/iautohaus.ca/"],"priceRange":"$4,888 - $689,888","identifier":"BC Dealer #40212"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.iautohaus.ca/#website","name":"I AUTOHAUS","url":"https://www.iautohaus.ca","publisher":{"@id":"https://www.iautohaus.ca/#dealer"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.iautohaus.ca/search?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
+    <script>
+      // locale before first paint (no flash). Both locales are LTR, so `dir`
+      // never changes — only the lang attribute, which swaps the font stack.
+      (function () {
+        try {
+          var isZh = location.pathname === '/zh' || location.pathname.indexOf('/zh/') === 0;
+          document.documentElement.lang = isZh ? 'zh' : 'en';
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/assets/index-D_i8-ZSe.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Cl0_Te0s.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABCD CARS | Luxury & Exotic Automotive Marketplace</title>
+  <meta name="description" content="Discover rare, certified pre-owned and exotic supercars. Premium automotive marketplace with real-time 3D vehicle studio, bespoke financing, and VIP concierge.">
+  <meta name="theme-color" content="#060608">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="ABCD CARS | Luxury & Exotic Automotive Marketplace">
+  <meta property="og:description" content="Explore premier luxury vehicles, supercars, and certified pre-owned exotics in our 3D interactive showroom.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Three.js 3D Library for Interactive Hero Car Rotation -->
+  <script src="js/three.min.js"></script>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       TOP NAVIGATION BAR
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="#hero" class="brand-logo" id="main-brand-logo">
+        ABCD <span class="red-accent">CARS</span>
+        <span class="brand-badge">EXOTICS</span>
+      </a>
+
+      <nav class="desktop-nav">
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active" data-i18n="nav.showroom">Showroom</a></li>
+          <li><a href="#marketplace" class="nav-link" data-i18n="nav.marketplace">Marketplace</a></li>
+          <li><a href="sell-your-car.html" class="nav-link" data-i18n="nav.sellCar">Sell Your Car</a></li>
+          <li><a href="#financing" class="nav-link" data-i18n="nav.financing">Financing</a></li>
+          <li><a href="about.html" class="nav-link" data-i18n="nav.aboutUs">About Us</a></li>
+          <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Native Language Translation Dropdown -->
+        <div class="lang-selector-wrap" id="lang-selector-desktop">
+          <button class="lang-btn" id="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Change Language">
+            <span class="lang-globe-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </span>
+            <span class="current-lang-code" id="desktop-current-lang">EN</span>
+            <svg class="lang-chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="lang-dropdown-menu" id="lang-dropdown-menu">
+            <button class="lang-option active" data-lang="en">
+              <span class="lang-flag">🇬🇧</span>
+              <span class="lang-title">English</span>
+              <span class="lang-native">EN</span>
+            </button>
+            <button class="lang-option" data-lang="zh">
+              <span class="lang-flag">🇨🇳</span>
+              <span class="lang-title">Chinese</span>
+              <span class="lang-native">中文</span>
+            </button>
+            <button class="lang-option" data-lang="fr">
+              <span class="lang-flag">🇫🇷</span>
+              <span class="lang-title">French</span>
+              <span class="lang-native">Français</span>
+            </button>
+            <button class="lang-option" data-lang="hi">
+              <span class="lang-flag">🇮🇳</span>
+              <span class="lang-title">Hindi</span>
+              <span class="lang-native">हिन्दी</span>
+            </button>
+            <button class="lang-option" data-lang="pa">
+              <span class="lang-flag">🇮🇳</span>
+              <span class="lang-title">Punjabi</span>
+              <span class="lang-native">ਪੰਜਾਬੀ</span>
+            </button>
+          </div>
+        </div>
+
+        <a href="tel:6042707662" class="tel-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <span>604-270-7662</span>
+        </a>
+        <a href="#marketplace" class="btn btn-primary btn-sm" data-i18n="nav.exploreCars">Explore Cars</a>
+        
+        <!-- Unmissable Mobile Hamburger Button -->
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+          <span class="burger-bars">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          <span data-i18n="nav.menu">MENU</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dedicated Slide-In Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div class="mobile-nav-header">
+      <span class="brand-logo" style="font-size: 1.25rem;">
+        ABCD <span class="red-accent">CARS</span>
+        <span class="brand-badge" style="font-size: 0.65rem;">EXOTICS</span>
+      </span>
+      <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close Menu">&times;</button>
+    </div>
+
+    <!-- Mobile Language Selector Strip -->
+    <div class="mobile-lang-strip">
+      <div class="mobile-lang-title">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        <span data-i18n="nav.selectLanguage">Select Language</span>
+      </div>
+      <div class="mobile-lang-pills">
+        <button class="mobile-lang-pill active" data-lang="en">🇬🇧 EN</button>
+        <button class="mobile-lang-pill" data-lang="zh">🇨🇳 中文</button>
+        <button class="mobile-lang-pill" data-lang="fr">🇫🇷 FR</button>
+        <button class="mobile-lang-pill" data-lang="hi">🇮🇳 हिन्दी</button>
+        <button class="mobile-lang-pill" data-lang="pa">🇮🇳 ਪੰਜਾਬੀ</button>
+      </div>
+    </div>
+
+    <ul class="mobile-nav-list">
+      <li>
+        <a href="#hero" class="mobile-nav-link active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <span data-i18n="nav.cinema">Showroom Cinema</span>
+        </a>
+      </li>
+      <li>
+        <a href="#marketplace" class="mobile-nav-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span data-i18n="nav.inventoryMobile">Marketplace & Inventory</span>
+        </a>
+      </li>
+      <li>
+        <a href="sell-your-car.html" class="mobile-nav-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          <span data-i18n="nav.sellConsignMobile">Sell / Consign Your Car</span>
+        </a>
+      </li>
+      <li>
+        <a href="#financing" class="mobile-nav-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+          <span data-i18n="nav.calcMobile">Financing & Lease Calculator</span>
+        </a>
+      </li>
+      <li>
+        <a href="about.html" class="mobile-nav-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span data-i18n="nav.aboutMobile">About ABCD Exotics</span>
+        </a>
+      </li>
+      <li>
+        <a href="#contact" class="mobile-nav-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span data-i18n="nav.contactMobile">Showroom & Contact</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="mobile-nav-footer">
+      <a href="tel:6042707662" class="btn btn-outline" style="width: 100%; margin-bottom: 12px; justify-content: center; font-size: 0.88rem;">
+        📞 <span data-i18n="nav.callConcierge">Call Concierge</span> (604) 270-7662
+      </a>
+      <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 0.88rem;" data-i18n="nav.bookVip">
+        Book VIP Viewing
+      </a>
+    </div>
+  </div>
+  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION: 3D INTERACTIVE CAR WITH CURSOR ROTATION
+         ========================================================================== -->
+    <section class="hero-section" id="hero">
+      <!-- Full-Bleed Video Background (Autoplay + Cursor Angle Scrub) -->
+      <div class="hero-video-bg">
+        <video id="hero-main-video" class="hero-main-video" autoplay muted loop playsinline poster="images/hero_car.jpg">
+          <source src="videos/abcd_hero_web.mp4" type="video/mp4">
+          <source src="videos/abcd_hero_cinematic.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <div class="hero-video-overlay"></div>
+        <div class="hero-ambient-line"></div>
+      </div>
+
+      <!-- Hero Main Branding & Action Content -->
+      <div class="container hero-content-wrapper">
+        <div class="hero-content">
+          <div class="hero-kicker">
+            <span class="pulse-dot"></span>
+            <span data-i18n="hero.kicker">Richmond, BC • Boutique Exotic Showroom</span>
+          </div>
+
+          <h1 class="hero-headline" data-i18n="hero.headline">
+            <span class="text-gradient">The Pinnacle of</span><br>
+            <span class="text-red">Automotive Power.</span>
+          </h1>
+
+          <p class="hero-desc" data-i18n="hero.desc">
+            Western Canada's premier boutique destination for handpicked certified pre-owned supercars, luxury performance SUVs, and bespoke acquisitions.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#marketplace" class="btn btn-primary">
+              <span data-i18n="hero.ctaExplore">Explore Collection</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="#contact" class="btn btn-outline" data-i18n="hero.ctaVip">
+              Schedule VIP Viewing
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Minimal Showroom Highlights Bar -->
+      <div class="container" style="position: relative; z-index: 10;">
+        <div class="hero-bottom-bar">
+          <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">
+              <span class="pulse-dot"></span>
+              <span data-i18n="hero.address">10740 Cambie Road, Richmond, BC</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">
+              <span style="color: var(--red-bright);">★</span>
+              <span data-i18n="hero.dealerLicense">BC Licensed Exotic Dealer #40212</span>
+            </div>
+          </div>
+
+          <a href="#marketplace" style="display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">
+            <span data-i18n="hero.exploreInventory">Explore Inventory</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red-bright)" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         MARKETPLACE & INVENTORY SECTION
+         ========================================================================== -->
+    <section class="marketplace-section" id="marketplace">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="marketplace-header">
+          <div>
+            <div class="section-tag" data-i18n="market.tag">Live Inventory</div>
+            <h2 class="section-title" data-i18n="market.title">Exotic & Performance <span>Collection</span></h2>
+            <p class="section-subtitle" data-i18n="market.subtitle">
+              Every automobile in our vault is certified with full provenance, multi-point mechanical inspection, and available for immediate national delivery.
+            </p>
+          </div>
+          <div class="results-count" id="results-count">
+            Loading inventory...
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="marketplace-toolbar">
+          <div class="filter-row-top">
+            <!-- Search bar -->
+            <div class="search-input-wrap">
+              <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" id="search-input" data-i18n-placeholder="market.searchPlaceholder" placeholder="Search by make, model, year (e.g. Porsche, GT3, V12)...">
+            </div>
+
+            <!-- Make Selector -->
+            <div class="custom-select-wrap">
+              <select id="make-filter">
+                <option value="all">All Makes</option>
+                <option value="Porsche">Porsche</option>
+                <option value="Mercedes-AMG">Mercedes-AMG</option>
+                <option value="Lamborghini">Lamborghini</option>
+                <option value="BMW">BMW</option>
+                <option value="Audi">Audi</option>
+                <option value="Aurora Exotics">Aurora Exotics</option>
+              </select>
+            </div>
+
+            <!-- Sort By -->
+            <div class="custom-select-wrap">
+              <select id="sort-filter">
+                <option value="default">Featured First</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="year-desc">Newest Year</option>
+                <option value="power-desc">Highest Horsepower</option>
+              </select>
+            </div>
+
+            <!-- Direct CTA -->
+            <a href="#contact" class="btn btn-outline btn-sm" data-i18n="exp.card2Btn">Bespoke Sourcing</a>
+          </div>
+
+          <!-- Category Pill Tabs -->
+          <div class="category-tabs">
+            <button class="tab-btn active" data-category="all" data-i18n="market.all">All Vehicles</button>
+            <button class="tab-btn" data-category="supercars" data-i18n="market.supercars">Supercars & Hypercars</button>
+            <button class="tab-btn" data-category="suvs" data-i18n="market.suvs">Luxury Performance SUVs</button>
+            <button class="tab-btn" data-category="coupes" data-i18n="market.coupes">Grand Tourers & Coupes</button>
+          </div>
+        </div>
+
+        <!-- Car Cards Grid -->
+        <div class="car-inventory-grid" id="vehicle-grid">
+          <!-- Dynamically populated via js/marketplace.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FINANCING & LEASING CALCULATOR
+         ========================================================================== -->
+    <section class="calculator-section" id="financing">
+      <div class="container">
+        <div class="calc-grid">
+          <div>
+            <div class="section-tag" data-i18n="calc.tag">Bespoke Financing</div>
+            <h2 class="section-title" data-i18n="calc.title">Prestige <span>Leasing & Finance</span></h2>
+            <p class="section-subtitle" style="margin-bottom: 30px;" data-i18n="calc.subtitle">
+              Take advantage of our flexible exotic leasing, competitive financing rates up to 96 months OAC, and open-ended balloon structures.
+            </p>
+
+            <div class="calc-card">
+              <!-- Vehicle Price Slider -->
+              <div class="calc-field-group">
+                <div class="calc-field-header">
+                  <label for="calc-price-slider" data-i18n="calc.vehiclePrice">Vehicle Purchase Price ($)</label>
+                  <span class="calc-val-display" id="calc-price-disp">$279,800</span>
+                </div>
+                <input type="range" class="calc-slider" id="calc-price-slider" min="50000" max="750000" step="5000" value="279800">
+              </div>
+
+              <!-- Down Payment Slider -->
+              <div class="calc-field-group">
+                <div class="calc-field-header">
+                  <label for="calc-down-slider" data-i18n="calc.downPayment">Down Payment ($)</label>
+                  <span class="calc-val-display" id="calc-down-disp">20% ($55,960)</span>
+                </div>
+                <input type="range" class="calc-slider" id="calc-down-slider" min="10" max="60" step="5" value="20">
+              </div>
+
+              <!-- Interest Rate (APR) -->
+              <div class="calc-field-group">
+                <div class="calc-field-header">
+                  <label for="calc-apr-slider" data-i18n="calc.interestRate">Estimated APR</label>
+                  <span class="calc-val-display" id="calc-apr-disp">5.99%</span>
+                </div>
+                <input type="range" class="calc-slider" id="calc-apr-slider" min="2.99" max="11.99" step="0.25" value="5.99">
+              </div>
+
+              <!-- Loan Term Selector -->
+              <div class="calc-field-group">
+                <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 10px;" data-i18n="calc.termMonths">Lease Term (Months)</label>
+                <div class="term-selector">
+                  <button class="term-btn" data-term="36">36 Mos</button>
+                  <button class="term-btn" data-term="48">48 Mos</button>
+                  <button class="term-btn active" data-term="60">60 Mos</button>
+                  <button class="term-btn" data-term="72">72 Mos</button>
+                  <button class="term-btn" data-term="96">96 Mos</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Calculation Result Summary Box -->
+          <div class="calc-result-box">
+            <div class="calc-monthly-label" data-i18n="calc.monthlyEst">Estimated Monthly Payment</div>
+            <div class="calc-monthly-amount" id="calc-monthly-disp">$4,324<span>/mo</span></div>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 24px;" data-i18n="calc.taxNotice">
+              *Excludes applicable BC taxes & dealer documentation.
+            </p>
+
+            <div class="calc-breakdown-row">
+              <div class="calc-breakdown-item">
+                <strong id="calc-total-finance">$223,840</strong>
+                <span data-i18n="calc.principal">Net Principal Financed</span>
+              </div>
+              <div class="calc-breakdown-item">
+                <strong id="calc-term-disp">60 Mos</strong>
+                <span data-i18n="calc.termLength">Term Length</span>
+              </div>
+              <div class="calc-breakdown-item">
+                <strong>$0</strong>
+                <span data-i18n="calc.earlyPayout">Early Payout Penalty</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+              <a href="#contact" class="btn btn-primary" style="width: 100%;" data-i18n="calc.applyBtn">
+                Submit VIP Pre-Approval Application
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         THE ABCD EXPERIENCE / VALUE PROPOSITIONS
+         ========================================================================== -->
+    <section class="marketplace-section" id="about" style="border-top: 1px solid var(--border-subtle);">
+      <div class="container">
+        <div style="text-align: center; max-width: 750px; margin: 0 auto 60px;">
+          <div class="section-tag" data-i18n="exp.tag">The Standard of Distinction</div>
+          <h2 class="section-title" data-i18n="exp.title">Why Connoisseurs Choose <span>ABCD CARS</span></h2>
+          <p class="section-subtitle" style="margin: 0 auto;" data-i18n="exp.subtitle">
+            We operate with absolute transparency, verified provenance, and personalized concierge delivery across North America.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+          <!-- Feature 1 -->
+          <div class="hero-spec-card" style="text-align: left; padding: 28px;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: var(--red-subtle); border: 1px solid var(--red-border); color: var(--red-bright); display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 10px;" data-i18n="exp.feat1Title">180-Point Exotic Certification</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;" data-i18n="exp.feat1Desc">
+              Every vehicle undergoes rigorous mechanical, electrical, and cosmetic validation by factory-trained master technicians.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="hero-spec-card" style="text-align: left; padding: 28px;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: var(--red-subtle); border: 1px solid var(--red-border); color: var(--red-bright); display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                <line x1="1" y1="10" x2="23" y2="10"></line>
+              </svg>
+            </div>
+            <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 10px;" data-i18n="exp.feat2Title">Best Deal First Pricing</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;" data-i18n="exp.feat2Desc">
+              Transparent market-backed valuations without hidden fees or negotiation stress. We honor what we advertise.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="hero-spec-card" style="text-align: left; padding: 28px;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: var(--red-subtle); border: 1px solid var(--red-border); color: var(--red-bright); display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 10px;" data-i18n="exp.feat3Title">Enclosed Concierge Delivery</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;" data-i18n="exp.feat3Desc">
+              Door-to-door white glove transport in climate-controlled enclosed carriers anywhere in Canada and internationally.
+            </p>
+          </div>
+        </div>
+
+        <!-- Dedicated Destinations: Sell Your Car & About Showroom -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 36px;">
+          <!-- Sell Your Car Showcase Card -->
+          <div class="showcase-banner-card" style="position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-subtle); background: var(--bg-card); min-height: 270px; display: flex; flex-direction: column; justify-content: flex-end; padding: 34px 28px; transition: var(--transition-base);">
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,6,8,0.25) 0%, rgba(6,6,8,0.92) 80%), url('images/sell_car_banner.jpg') center/cover no-repeat; z-index: 1;"></div>
+            <div style="position: relative; z-index: 2;">
+              <span style="background: rgba(229,9,20,0.25); border: 1px solid var(--red-border); color: #fff; font-size: 0.72rem; padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.08em; display: inline-block; margin-bottom: 12px; font-weight: 700;" data-i18n="exp.card1Badge">Instant Wire Buyouts</span>
+              <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: #fff; margin-bottom: 8px;" data-i18n="exp.card1Title">Sell or Consign Your Supercar</h3>
+              <p style="color: rgba(255,255,255,0.78); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px; max-width: 480px;" data-i18n="exp.card1Desc">
+                Direct certified cash offers within 24 hours, lien clearances handled, and bespoke white-glove consignment to Canada's elite collector registry.
+              </p>
+              <a href="sell-your-car.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+                <span data-i18n="exp.card1Btn">Value Your Exotic</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- About Us Showcase Card -->
+          <div class="showcase-banner-card" style="position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-subtle); background: var(--bg-card); min-height: 270px; display: flex; flex-direction: column; justify-content: flex-end; padding: 34px 28px; transition: var(--transition-base);">
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,6,8,0.25) 0%, rgba(6,6,8,0.92) 80%), url('images/showroom_interior.jpg') center/cover no-repeat; z-index: 1;"></div>
+            <div style="position: relative; z-index: 2;">
+              <span style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 0.72rem; padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.08em; display: inline-block; margin-bottom: 12px; font-weight: 700;" data-i18n="exp.card2Badge">Boutique Showroom • Dealer #40212</span>
+              <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: #fff; margin-bottom: 8px;" data-i18n="exp.card2Title">The ABCD Heritage & Vault</h3>
+              <p style="color: rgba(255,255,255,0.78); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px; max-width: 480px;" data-i18n="exp.card2Desc">
+                Discover our curated gallery on Cambie Road in Richmond, BC. Museum-grade vehicle prep, transparent pricing, and bespoke client advisory.
+              </p>
+              <a href="about.html" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);">
+                <span data-i18n="exp.card2Btn">Discover Our Story</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         VIP TEST DRIVE & SHOWROOM CONTACT
+         ========================================================================== -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card-wrap">
+          <!-- Information Panel -->
+          <div class="contact-info-panel">
+            <div>
+              <div class="section-tag" data-i18n="contact.tag">Private Showroom</div>
+              <h2 class="section-title" data-i18n="contact.title">Visit Our <span>Gallery</span></h2>
+              <p style="color: var(--text-muted); font-size: 0.95rem;" data-i18n="contact.subtitle">
+                Experience vehicles in our private temperature-controlled showroom under architectural lighting.
+              </p>
+
+              <ul class="showroom-details-list">
+                <li class="showroom-detail-item">
+                  <div class="detail-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong style="color: #fff; display: block;" data-i18n="contact.addressLabel">Showroom Address</strong>
+                    <span style="color: var(--text-muted); font-size: 0.88rem;">10740 Cambie Road, Richmond, BC V6X 1K8</span>
+                  </div>
+                </li>
+
+                <li class="showroom-detail-item">
+                  <div class="detail-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong style="color: #fff; display: block;" data-i18n="contact.hoursLabel">Operating Hours</strong>
+                    <span style="color: var(--text-muted); font-size: 0.88rem;" data-i18n="contact.hoursVal">Mon - Thu: 09:00 - 20:00 • Fri - Sat: 09:00 - 18:00 • Sun: 10:00 - 17:00</span>
+                  </div>
+                </li>
+
+                <li class="showroom-detail-item">
+                  <div class="detail-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong style="color: #fff; display: block;" data-i18n="contact.conciergeLabel">Direct Concierge Line</strong>
+                    <span style="color: var(--text-muted); font-size: 0.88rem;">604-270-7662 / info@abcdcars.ca</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div style="font-size: 0.82rem; color: var(--text-dim);" data-i18n="contact.licenseNotice">
+              BC Dealer License #40212 • Strictly by Appointment & Open Gallery
+            </div>
+          </div>
+
+          <!-- Booking Form Panel -->
+          <div class="contact-form-panel">
+            <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 8px;" data-i18n="contact.formTitle">Book VIP Test Drive</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;" data-i18n="contact.formDesc">
+              Complete the credentials below and your dedicated client advisor will confirm your private vehicle presentation.
+            </p>
+
+            <form class="vip-booking-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="td-first-name" data-i18n="contact.firstName">First Name</label>
+                  <input type="text" id="td-first-name" class="form-input" required placeholder="John">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="td-last-name" data-i18n="contact.lastName">Last Name</label>
+                  <input type="text" id="td-last-name" class="form-input" required placeholder="Doe">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="td-phone" data-i18n="contact.phone">Phone Number</label>
+                  <input type="tel" id="td-phone" class="form-input" required placeholder="(604) 555-0199">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="td-email" data-i18n="contact.email">Email Address</label>
+                  <input type="email" id="td-email" class="form-input" required placeholder="john@domain.com">
+                </div>
+                <div class="form-group full-width">
+                  <label class="form-label" for="td-vehicle-select" data-i18n="contact.vehicleInterest">Vehicle of Interest</label>
+                  <select id="td-vehicle-select" class="form-input" style="cursor: pointer;">
+                    <option value="2024 Porsche 911 GT3">2024 Porsche 911 GT3 (992)</option>
+                    <option value="2023 Mercedes-AMG G63 4MATIC">2023 Mercedes-AMG G63 4MATIC</option>
+                    <option value="2024 Lamborghini Revuelto V12">2024 Lamborghini Revuelto V12</option>
+                    <option value="2024 BMW M4 Competition">2024 BMW M4 Competition xDrive</option>
+                    <option value="2023 Audi RS7 Sportback">2023 Audi RS7 Sportback 4.0T</option>
+                    <option value="2025 Aurora Agil V12">2025 Aurora Agil V12 Concept</option>
+                  </select>
+                </div>
+                <div class="form-group full-width">
+                  <label class="form-label" for="td-preferred-date" data-i18n="contact.prefDate">Preferred Appointment Date</label>
+                  <input type="date" id="td-preferred-date" class="form-input" required>
+                </div>
+                <div class="form-group full-width">
+                  <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;" data-i18n="contact.submitBtn">
+                    Confirm VIP Private Viewing
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       VEHICLE QUICK VIEW MODAL
+       ========================================================================== -->
+  <div class="modal-backdrop" id="quick-view-modal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" aria-label="Close Modal">&times;</button>
+      <div id="modal-dynamic-content">
+        <!-- Rendered dynamically via js/marketplace.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       STANDALONE TEST DRIVE MODAL
+       ========================================================================== -->
+  <div class="modal-backdrop" id="test-drive-modal">
+    <div class="modal-dialog" style="max-width: 600px; padding: 40px;">
+      <button class="modal-close-btn" aria-label="Close Modal">&times;</button>
+      <div class="section-tag">VIP Reservation</div>
+      <h2 style="font-size: 1.8rem; margin: 8px 0 16px;">Schedule Your Private Test Drive</h2>
+      <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 24px;">
+        Take the wheel on open highway routes with our master brand specialist.
+      </p>
+
+      <form class="vip-booking-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="m-first-name">First Name</label>
+            <input type="text" id="m-first-name" class="form-input" required placeholder="Alex">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="m-last-name">Last Name</label>
+            <input type="text" id="m-last-name" class="form-input" required placeholder="Vance">
+          </div>
+          <div class="form-group full-width">
+            <label class="form-label" for="m-phone">Contact Phone</label>
+            <input type="tel" id="m-phone" class="form-input" required placeholder="(604) 789-1234">
+          </div>
+          <div class="form-group full-width">
+            <label class="form-label" for="m-email">Email</label>
+            <input type="email" id="m-email" class="form-input" required placeholder="alex@prestige.com">
+          </div>
+          <div class="form-group full-width">
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">
+              Request Test Drive Reservation
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FOOTER (WITH MANDATORY RIGHTCLICKS.LK ATTRIBUTION)
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Brand column -->
+        <div>
+          <a href="#hero" class="brand-logo" style="display: inline-flex;">
+            ABCD <span class="red-accent">CARS</span>
+          </a>
+          <p class="footer-brand-desc" data-i18n="footer.brandDesc">
+            Western Canada's hallmark for high-performance exotics, certified pre-owned supercars, and bespoke private client acquisition.
+          </p>
+          <div style="margin-top: 18px; color: var(--red-bright); font-size: 0.85rem; font-weight: 700;" data-i18n="footer.dealerBadge">
+            BC Licensed Auto Dealer #40212
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer.colShowroom">Showroom</h4>
+          <ul class="footer-links">
+            <li><a href="#hero" class="footer-link" data-i18n="footer.link3d">3D Vehicle Studio</a></li>
+            <li><a href="#marketplace" class="footer-link" data-i18n="footer.linkInventory">Full Inventory</a></li>
+            <li><a href="sell-your-car.html" class="footer-link" data-i18n="footer.linkSellExotic">Sell Your Exotic</a></li>
+            <li><a href="about.html" class="footer-link" data-i18n="footer.linkHeritage">About Our Heritage</a></li>
+            <li><a href="#financing" class="footer-link" data-i18n="footer.linkLeaseCalc">Leasing Calculator</a></li>
+          </ul>
+        </div>
+
+        <!-- Client Services -->
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer.colServices">Client Services</h4>
+          <ul class="footer-links">
+            <li><a href="sell-your-car.html" class="footer-link" data-i18n="footer.linkCashBuyout">Instant Cash Buyout</a></li>
+            <li><a href="sell-your-car.html" class="footer-link" data-i18n="footer.linkConsignment">White-Glove Consignment</a></li>
+            <li><a href="#contact" class="footer-link" data-i18n="footer.linkTestDrive">VIP Test Drive</a></li>
+            <li><a href="about.html" class="footer-link" data-i18n="footer.linkSourcing">Bespoke Vehicle Sourcing</a></li>
+            <li><a href="sell-your-car.html" class="footer-link" data-i18n="footer.linkAppraisal">Trade-In Appraisal</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter & Drops -->
+        <div>
+          <h4 class="footer-col-title" data-i18n="footer.colDrops">VIP Private Drops</h4>
+          <p style="color: var(--text-muted); font-size: 0.88rem;" data-i18n="footer.dropsDesc">
+            Receive secret unlisted inventory allocations prior to public marketplace release.
+          </p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" data-i18n-placeholder="footer.emailPlaceholder" placeholder="Your private email..." required>
+            <button type="submit" class="btn btn-primary btn-sm" data-i18n="footer.join">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Bottom Bar with User-Specified Attribution -->
+      <div class="footer-bottom-bar">
+        <div class="copyright-text" data-i18n="footer.copyright">
+          &copy; 2026 ABCD Cars Sales & Leasing Ltd. All Rights Reserved. Prices exclude applicable dealer documentation & taxes.
+        </div>
+
+        <!-- MANDATORY ATTRIBUTION REQUIRED BY USER -->
+        <div class="developer-attribution">
+          <span data-i18n="footer.developedBy">Designed & Developed by</span> <span class="designer-badge">RightClicks.lk</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MOBILE BOTTOM STICKY NAVIGATION DOCK (1-Tap Thumb Navigation)
+       ========================================================================== -->
+  <nav class="mobile-bottom-dock" id="mobile-bottom-dock" aria-label="Mobile Navigation Dock">
+    <a href="#hero" class="dock-item active" data-target="hero">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+      </svg>
+      <span data-i18n="dock.showroom">Showroom</span>
+    </a>
+    <a href="#marketplace" class="dock-item" data-target="marketplace">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      </svg>
+      <span data-i18n="dock.inventory">Inventory</span>
+    </a>
+    <a href="sell-your-car.html" class="dock-item" data-target="sell">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="12" y1="1" x2="12" y2="23"></line>
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+      </svg>
+      <span data-i18n="dock.sellCar">Sell Car</span>
+    </a>
+    <a href="about.html" class="dock-item" data-target="about">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+      </svg>
+      <span data-i18n="dock.about">About</span>
+    </a>
+    <a href="tel:6042707662" class="dock-item highlight-dock">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+      </svg>
+      <span data-i18n="dock.call">Call</span>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/herovideo.js"></script>
+  <script src="js/car3d.js"></script>
+  <script src="js/marketplace.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
